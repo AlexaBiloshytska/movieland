@@ -10,4 +10,5 @@ public interface MovieDao {
     List<Movie> getAll(LinkedHashMap<String, String> sortParams);
     List<Movie> getRandom(int randomCount);
     List<Movie> getMoviesByGenre(int genreId,LinkedHashMap<String, String> sortParams);
+    Movie getMovieById(int id);
 }

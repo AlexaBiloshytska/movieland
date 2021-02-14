@@ -17,7 +17,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/test/resources/test-application-context.xml")
+@ContextConfiguration(locations ="file:src/test/resources/test-application-context.xml")
 public class JdbcMovieDaoTest {
 
     @Autowired
@@ -34,6 +34,15 @@ public class JdbcMovieDaoTest {
     public void getRandom() {
         List<Movie> randomMovies= movieDao.getRandom(3);
         Assert.assertEquals(3,randomMovies.size());
+    }
+
+    @Test
+    public void getMovieById(){
+        int id = 1;
+        Movie movieById = movieDao.getMovieById(id);
+        Assert.assertNotNull(movieById);
+        Assert.assertEquals(1,movieById.getId());
+
     }
 
 }

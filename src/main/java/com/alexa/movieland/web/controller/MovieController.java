@@ -43,4 +43,10 @@ public class MovieController {
         return movieService.getMoviesByGenre(genreId,sortParams);
     }
 
+    @GetMapping("/movie")
+    public Movie getMovieById(@RequestParam int id){
+        return movieService.getMovieById(id);
+    }
+
+
 }

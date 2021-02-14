@@ -17,7 +17,9 @@ public class JdbcMovieDao  implements MovieDao {
     private static final String GET_ALL_MOVIES = "select * from movies";
     private static final String RANDOM = "select * from movies  order by random() limit ?";
     private static final String GET_MOVIES_BY_GENRE = "select * from movies m join genres g on g.id=m.id where g.id=?";
-    private static final MovieMapper MOVIE_MAPPER = new MovieMapper();
+    private static final String GET_MOVIE_BY_ID = "select * from movies m" +
+            " inner join  genres g on g.id=m.id where m.id = ?";
+    private static final MovieMapper MOVIE_MAPPER = new MovieMapper() ;
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
@@ -52,6 +54,13 @@ public class JdbcMovieDao  implements MovieDao {
         long startTime = System.currentTimeMillis();
         log.info("Getting movies by genre {} ms: ", System.currentTimeMillis()- startTime);
         return jdbcTemplate.query(GET_MOVIES_BY_GENRE, MOVIE_MAPPER, genreId);
+    }
+
+    @Override
+    public Movie getMovieById(int id) {
+        long startTime = System.currentTimeMillis();
+        log.info("Getting movies by genre {} ms: ", System.currentTimeMillis()- startTime);
+        return jdbcTemplate.queryForObject(GET_MOVIE_BY_ID, MOVIE_MAPPER, id);
     }
 
     private String buildQuery(String query, List<SortingEnum> sortStrategies) {

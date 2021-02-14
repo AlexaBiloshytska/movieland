@@ -68,4 +68,21 @@ public class MovieControllerTest {
     @Test
     public void getMoviesByGenre() {
     }
+
+    @Test
+    public void getMovieById(){
+        int id = 1;
+        when(service.getMovieById(id)).thenReturn(movie);
+        Movie movieById = controller.getMovieById(id);
+
+        assertNotNull(movieById);
+        assertEquals(1, movie.getId());
+        assertEquals("native", movie.getNameNative());
+        assertEquals("russian", movie.getNameRussian());
+        assertEquals(2009, movie.getYearOfRelease());
+        assertEquals("www.poster.com", movie.getPosterUrl());
+        assertEquals("description", movie.getDescription());
+        assertEquals(9.5, movie.getRating(), 0.00);
+        assertEquals(200.1, movie.getPrice(), 0.00);
+    }
 }

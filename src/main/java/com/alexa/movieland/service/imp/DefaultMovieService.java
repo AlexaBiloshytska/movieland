@@ -34,4 +34,9 @@ public class DefaultMovieService implements MovieService {
     public List<Movie> getMoviesByGenre(int genreId,LinkedHashMap<String, String> sortParams) {
         return movieDao.getMoviesByGenre(genreId, sortParams);
     }
+
+    @Override
+    public Movie getMovieById(int id) {
+        return movieDao.getMovieById(id);
+    }
 }
