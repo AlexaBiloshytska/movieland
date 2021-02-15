@@ -10,5 +10,5 @@ public interface MovieService {
 List<Movie> getAll(LinkedHashMap<String, String> sortParams);
     List<Movie> getRandom();
     List<Movie> getMoviesByGenre(int genreId,LinkedHashMap<String, String> sortParams);
-    Movie getMovieById(int id);
+    Movie getMovieById(int id,  String currency);
 }

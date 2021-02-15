@@ -72,8 +72,9 @@ public class MovieControllerTest {
     @Test
     public void getMovieById(){
         int id = 1;
-        when(service.getMovieById(id)).thenReturn(movie);
-        Movie movieById = controller.getMovieById(id);
+        String currency = "UAH";
+        when(service.getMovieById(id, currency)).thenReturn(movie);
+        Movie movieById = controller.getMovieById(id,currency);
 
         assertNotNull(movieById);
         assertEquals(1, movie.getId());

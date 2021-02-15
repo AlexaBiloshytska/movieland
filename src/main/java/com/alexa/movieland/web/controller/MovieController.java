@@ -44,8 +44,8 @@ public class MovieController {
     }
 
     @GetMapping("/movie")
-    public Movie getMovieById(@RequestParam int id){
-        return movieService.getMovieById(id);
+    public Movie getMovieById(@RequestParam int id, @RequestParam String currency){
+        return movieService.getMovieById(id,currency);
     }
 
 
